@@ -5,11 +5,11 @@ function macro(t, routes, path, route, params = {}) {
   const compiled = compile(routes);
   const result = matcher(compiled, path);
 
-  t.deepEqual(result, result ? { route, params } : undefined);
+  t.deepEqual(result, result ? { route: routes[route], params } : undefined);
 }
 
-macro.title = (providedTitle = "", routes, path, expected) =>
-  `${providedTitle} ${path} = ${expected ? expected.path : "undefined"}`.trim();
+macro.title = (providedTitle = "", routes, path, route) =>
+  `${providedTitle} ${path} = ${routes[route] ? routes[route].path : "undefined"}`.trim();
 
 const routes = [
   { path: "/a/b/c" },
@@ -19,15 +19,15 @@ const routes = [
   { path: "/" }
 ];
 
-test(macro, routes, "/a", undefined);
-test(macro, routes, "/a/b", routes[1]);
-test(macro, routes, "/a/b/c", routes[0]);
-test(macro, routes, "/d/value1/e", routes[3], { att1: "value1" });
-test(macro, routes, "/d/value1/e/value2", routes[2], {
+test(macro, routes, "/a", -1);
+test(macro, routes, "/a/b", 1);
+test(macro, routes, "/a/b/c", 0);
+test(macro, routes, "/d/value1/e", 3, { att1: "value1" });
+test(macro, routes, "/d/value1/e/value2", 2, {
   att1: "value1",
   att2: "value2"
 });
-test(macro, routes, "/", routes[4]);
+test(macro, routes, "/", 4);
 
 const routes2 = [
   { path: "/a/b*" },
@@ -36,8 +36,25 @@ const routes2 = [
   { path: "/" }
 ];
 
-test("wildcard", macro, routes2, "/a/b", routes2[0]);
-test("wildcard", macro, routes2, "/a/bxxx", routes2[0]);
-test("wildcard", macro, routes2, "/unknown", routes2[1]);
-test("wildcard", macro, routes2, "/preXXX/a", routes2[2]);
-test("wildcard", macro, routes2, "/prXXX/a", routes2[1]);
+test("wildcard", macro, routes2, "/a/b", 0);
+test("wildcard", macro, routes2, "/a/bxxx", 0);
+test("wildcard", macro, routes2, "/unknown", 1);
+test("wildcard", macro, routes2, "/preXXX/a", 2);
+test("wildcard", macro, routes2, "/prXXX/a", 1);
+
+
+
+/*
+const routes3 = [
+  { path: "/" },
+  { path: "/*" },
+  { path: "/about"},
+  { path: "/login" }
+];
+
+test("bastmatch", macro, routes3, "/", 0);
+test("bastmatch", macro, routes3, "/index.html", 1);
+test("bastmatch", macro, routes3, "/about", 2);
+test("bastmatch", macro, routes3, "/login", 3);
+
+*/
