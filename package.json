@@ -1,0 +1,4 @@
+{
+    "name" : "multi-path-matcher",
+    "module" : "src/multi-path-matcher.mjs"
+}
