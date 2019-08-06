@@ -1,4 +1,64 @@
 {
-    "name" : "multi-path-matcher",
-    "module" : "src/multi-path-matcher.mjs"
+  "name": "multi-path-matcher",
+  "version": "0.0.0-semantic-release",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/multi-path-matcher.mjs",
+  "module": "src/multi-path-matcher.mjs",
+  "description": "finds and decodes best matching path",
+  "keywords": [],
+  "contributors": [
+    {
+      "name": "Markus Felten",
+      "email": "markus.felten@gmx.de"
+    }
+  ],
+  "license": "BSD-2-Clause",
+  "scripts": {
+    "cover": "c8 -x 'tests/**/*.mjs' --temp-directory build/tmp ava && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
+    "docs": "documentation readme src/multi-path-matcher.mjs --section=API",
+    "lint": "documentation lint src/multi-path-matcher.mjs",
+    "posttest": "markdown-doctest",
+    "test": "ava"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^2.2.0",
+    "c8": "^5.0.2",
+    "documentation": "^12.1.1",
+    "esm": "^3.2.25",
+    "markdown-doctest": "^0.9.1",
+    "semantic-release": "^15.13.19"
+  },
+  "engines": {
+    "node": ">=10.16.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arlac77/multi-path-matcher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arlac77/multi-path-matcher/issues"
+  },
+  "homepage": "https://github.com/arlac77/multi-path-matcher#readme",
+  "ava": {
+    "require": [
+      "esm"
+    ],
+    "extensions": [
+      "mjs"
+    ],
+    "babel": false,
+    "compileEnhancements": false,
+    "files": [
+      "tests/*-test.mjs"
+    ]
+  },
+  "template": {
+    "repository": {
+      "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
+    }
+  }
 }
