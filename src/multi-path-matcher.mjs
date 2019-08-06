@@ -1,33 +1,34 @@
-
-
 /**
-  * @typedef CompiledRoutes {object}
+ * Result of the routes compilation
+ * @typedef {Object} CompiledRoutes
  */
 
 /**
- * @typedef Route object
+ * one single route
+ * @typedef {Object} Route 
  * @property {string} path
  */
 
- /**
-  * @typedef Match object
-  * @property {Route} route
-  * @property {object} params
-  */
+/**
+ * result of a match
+ * @typedef  {Object} Match
+ * @property {Route} route
+ * @property {Object} params
+ */
 
 /**
  * compile a set of routes
- * @param {Route} routes[]
- * @return {object}
+ * @param {Route[]} routes
+ * @return {Object}
  */
 export function compile(routes) {
   return routes;
 }
 
 /**
- * 
- * @param {CompiledRoutes} compiled 
- * @param {string} path 
+ *
+ * @param {CompiledRoutes} compiled
+ * @param {string} path
  * @return {Match} match
  */
 export function matcher(compiled, path) {

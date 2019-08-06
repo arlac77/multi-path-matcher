@@ -8,8 +8,8 @@ function macro(t, routes, path, route, params = {}) {
   t.deepEqual(result, { route, params });
 }
 
-macro.title = (providedTitle = "", routes, input, expected) =>
-  `${providedTitle} ${input} = ${expected}`.trim();
+macro.title = (providedTitle = "", routes, path, expected) =>
+  `${providedTitle} ${path} = ${expected.path}`.trim();
 
 const routes = [
     { path: "/a/b" },
