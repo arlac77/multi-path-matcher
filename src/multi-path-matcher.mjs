@@ -5,7 +5,7 @@
 
 /**
  * one single route
- * @typedef {Object} Route 
+ * @typedef {Object} Route
  * @property {string} path
  */
 
@@ -22,7 +22,22 @@
  * @return {Object}
  */
 export function compile(routes) {
-  return routes;
+  return routes.map(route => {
+    return {
+      route,
+      regex: pathToRegexp(route.path)
+    };
+  });
+}
+
+export function pathToRegexp(path) {
+  const segments = path
+    .split(/\//)
+    .map(part =>
+      part.startsWith(":") ? `(?<${part.substring(1)}>[^\/]*)` : part
+    );
+  const rs = "^" + segments.join("\\/");
+  return RegExp(rs);
 }
 
 /**
@@ -32,7 +47,11 @@ export function compile(routes) {
  * @return {Match} match
  */
 export function matcher(compiled, path) {
-  const params = {};
 
-  return { route: compiled.find(r => r.path === path), params };
+  for(const c of compiled) {
+    const m = path.match(c.regex);
+    if(m) {
+      return { route: c.route, params : {...m.groups} };
+    }
+  }
 }
