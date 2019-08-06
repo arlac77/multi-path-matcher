@@ -11,9 +11,9 @@
 [![docs](http://inch-ci.org/github/arlac77/multi-path-matcher.svg?branch=master)](http://inch-ci.org/github/arlac77/multi-path-matcher)
 [![downloads](http://img.shields.io/npm/dm/multi-path-matcher.svg?style=flat-square)](https://npmjs.org/package/multi-path-matcher)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-# {{name}}
+# multi-path-matcher
 
-{{description}}
+finds and decodes best matching path
 
 # usage
 
@@ -24,7 +24,7 @@
 With [npm](http://npmjs.org) do:
 
 ```shell
-npm install {{name}}
+npm install multi-path-matcher
 ```
 
 # license

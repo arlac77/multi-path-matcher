@@ -30,8 +30,8 @@ export function compile(routes) {
  * @param {string} path 
  * @return {Match} match
  */
-export function match(compiled, path) {
+export function matcher(compiled, path) {
   const params = {};
 
-  return { route: routes.find(r => r.path === path), params };
+  return { route: compiled.find(r => r.path === path), params };
 }
