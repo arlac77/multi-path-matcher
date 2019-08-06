@@ -14,9 +14,30 @@
 
 # multi-path-matcher
 
-finds and decodes best matching path
+finds and decodes best matching path in a set of routes
 
 # usage
+
+```js
+import { compile, matcher } from "multi-path-matcher";
+
+const routes = [
+  { path: "/a/b/c" },
+  { path: "/a/b" },
+  { path: "/d/:att1/e/:att2" },
+  { path: "/d/:att1/e" },
+  { path: "/" }
+];
+
+const compiled = compile(routes);
+
+matcher(compiled "/a");                   // undefined
+matcher(compiled, "/a/b");                // routes[1]
+matcher(compiled, "/a/b/c");              // routes[0]
+matcher(compiled, "/d/value1/e");         // routes[3] { att1: "value1" }
+matcher(compileds, "/d/value1/e/value2"); // routes[2] { att1: "value1", att2: "value2" }
+matcher(macro, routes, "/");              // routes[4]
+```
 
 # API
 
@@ -24,15 +45,21 @@ finds and decodes best matching path
 
 ### Table of Contents
 
--   [CompiledRoutes](#compiledroutes)
--   [Route](#route)
-    -   [Properties](#properties)
--   [Match](#match)
-    -   [Properties](#properties-1)
--   [compile](#compile)
-    -   [Parameters](#parameters)
--   [matcher](#matcher)
-    -   [Parameters](#parameters-1)
+- [multi-path-matcher](#multi-path-matcher)
+- [usage](#usage)
+- [API](#api)
+    - [Table of Contents](#table-of-contents)
+  - [CompiledRoutes](#compiledroutes)
+  - [Route](#route)
+    - [Properties](#properties)
+  - [Match](#match)
+    - [Properties](#properties-1)
+  - [compile](#compile)
+    - [Parameters](#parameters)
+  - [matcher](#matcher)
+    - [Parameters](#parameters-1)
+- [install](#install)
+- [license](#license)
 
 ## CompiledRoutes
 
@@ -58,20 +85,22 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### Properties
 
--   `route` **[Route](#route)** 
--   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+-   `route` **[Route](#route)** as given to the compiler
+-   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** extracted from the path
 
 ## compile
 
-compile a set of routes
+Compile a set of routes
 
 ### Parameters
 
 -   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Route](#route)>** 
 
-Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** 
+Returns **[CompiledRoutes](#compiledroutes)** 
 
 ## matcher
+
+Find best match for a given path
 
 ### Parameters
 
