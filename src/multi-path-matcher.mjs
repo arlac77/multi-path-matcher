@@ -22,12 +22,16 @@
  * @return {Object}
  */
 export function compile(routes) {
-  return routes.map(route => {
-    return {
-      route,
-      regex: pathToRegexp(route.path)
-    };
-  });
+  return routes
+    .map(route => {
+      return {
+        route,
+        ...pathToRegexp(route.path)
+      };
+    })
+    .sort((a, b) =>
+      a.priority > b.priority ? -1 : a.priority < b.priority ? 1 : 0
+    );
 }
 
 export function pathToRegexp(path) {
@@ -36,8 +40,8 @@ export function pathToRegexp(path) {
     .map(part =>
       part.startsWith(":") ? `(?<${part.substring(1)}>[^\/]*)` : part
     );
-  const rs = "^" + segments.join("\\/");
-  return RegExp(rs);
+  const rs = "^" + segments.join("\\/") + '$';
+  return { regex: RegExp(rs), priority: segments.length };
 }
 
 /**
@@ -47,11 +51,10 @@ export function pathToRegexp(path) {
  * @return {Match} match
  */
 export function matcher(compiled, path) {
-
-  for(const c of compiled) {
+  for (const c of compiled) {
     const m = path.match(c.regex);
-    if(m) {
-      return { route: c.route, params : {...m.groups} };
+    if (m) {
+      return { route: c.route, params: { ...m.groups } };
     }
   }
 }

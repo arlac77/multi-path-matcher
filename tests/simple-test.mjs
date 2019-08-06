@@ -15,11 +15,14 @@ const routes = [
   { path: "/a/b/c" },
   { path: "/a/b" },
   { path: "/d/:att1/e/:att2" },
-  { path: "/d/:att1/e" }
+  { path: "/d/:att1/e" },
+  { path: "/" }
 ];
+
 
 test(macro, routes, "/a", undefined);
 test(macro, routes, "/a/b", routes[1]);
 test(macro, routes, "/a/b/c", routes[0]);
 test(macro, routes, "/d/value1/e", routes[3], { att1: "value1" });
 test(macro, routes, "/d/value1/e/value2", routes[2], { att1: "value1", att2: "value2"  });
+test(macro, routes, "/", routes[4]);
