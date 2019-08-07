@@ -89,4 +89,6 @@ export function matcher(compiled, path) {
       return { route: c.route, params: { ...m.groups } };
     }
   }
+
+  return { };
 }

@@ -5,7 +5,7 @@ function macro(t, routes, path, route, params = {}) {
   const compiled = compile(routes);
   const result = matcher(compiled, path);
 
-  t.deepEqual(result, result ? { route: routes[route], params } : undefined);
+  t.deepEqual(result, result.route ? { route: routes[route], params } : {});
 }
 
 macro.title = (providedTitle = "", routes, path, route) =>
