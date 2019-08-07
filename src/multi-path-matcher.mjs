@@ -46,7 +46,7 @@ export function compile(routes) {
  */
 
 /**
- * 
+ * Generate as regex with priority
  * @param {string} path 
  * @return {CompiledRoute} 
  */
