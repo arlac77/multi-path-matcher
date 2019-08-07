@@ -39,6 +39,7 @@ const routes2 = [
 test("wildcard", macro, routes2, "/a/b", 0);
 test("wildcard", macro, routes2, "/a/bxxx", 0);
 test("wildcard", macro, routes2, "/unknown", 1);
+test("wildcard", macro, routes2, "/deeper/unknown", 1);
 test("wildcard", macro, routes2, "/preXXX/a", 2);
 test("wildcard", macro, routes2, "/prXXX/a", 1);
 
