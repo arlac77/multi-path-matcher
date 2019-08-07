@@ -18,6 +18,7 @@ finds and decodes best matching path in a set of routes
 
 # usage
 
+With paramus
 ```js
 import { compile, matcher } from "multi-path-matcher";
 
@@ -38,6 +39,27 @@ matcher(compiled, "/d/value1/e");         // routes[3] { att1: "value1" }
 matcher(compileds, "/d/value1/e/value2"); // routes[2] { att1: "value1", att2: "value2" }
 matcher(macro, routes, "/");              // routes[4]
 ```
+
+With wildcards
+
+```js
+import { compile, matcher } from "multi-path-matcher";
+
+const routes = [
+  { path: "/" },
+  { path: "/*" },
+  { path: "/about"},
+  { path: "/login" }
+];
+
+const compiled = compile(routes);
+
+matcher(compiled "/");                   // routes[0]
+matcher(compiled "/index.html");         // routes[1]
+matcher(compiled "/about");              // routes[2]
+matcher(compiled "/login");              // routes[3]
+```
+
 
 # API
 
