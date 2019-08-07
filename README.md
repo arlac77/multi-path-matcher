@@ -45,21 +45,19 @@ matcher(macro, routes, "/");              // routes[4]
 
 ### Table of Contents
 
-- [multi-path-matcher](#multi-path-matcher)
-- [usage](#usage)
-- [API](#api)
-    - [Table of Contents](#table-of-contents)
-  - [CompiledRoutes](#compiledroutes)
-  - [Route](#route)
-    - [Properties](#properties)
-  - [Match](#match)
-    - [Properties](#properties-1)
-  - [compile](#compile)
-    - [Parameters](#parameters)
-  - [matcher](#matcher)
-    - [Parameters](#parameters-1)
-- [install](#install)
-- [license](#license)
+-   [CompiledRoutes](#compiledroutes)
+-   [Route](#route)
+    -   [Properties](#properties)
+-   [Match](#match)
+    -   [Properties](#properties-1)
+-   [compile](#compile)
+    -   [Parameters](#parameters)
+-   [CompiledRoute](#compiledroute)
+    -   [Properties](#properties-2)
+-   [pathToRegexp](#pathtoregexp)
+    -   [Parameters](#parameters-1)
+-   [matcher](#matcher)
+    -   [Parameters](#parameters-2)
 
 ## CompiledRoutes
 
@@ -97,6 +95,30 @@ Compile a set of routes
 -   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Route](#route)>** 
 
 Returns **[CompiledRoutes](#compiledroutes)** 
+
+## CompiledRoute
+
+result of a path compilation
+priorities for each path component
+
+-   :param        -> 0
+-   match \* or ?  -> 1
+-   literal       -> 2
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+### Properties
+
+-   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extration
+-   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
+
+## pathToRegexp
+
+### Parameters
+
+-   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+
+Returns **[CompiledRoute](#compiledroute)** 
 
 ## matcher
 

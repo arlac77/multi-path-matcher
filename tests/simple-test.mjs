@@ -42,9 +42,6 @@ test("wildcard", macro, routes2, "/unknown", 1);
 test("wildcard", macro, routes2, "/preXXX/a", 2);
 test("wildcard", macro, routes2, "/prXXX/a", 1);
 
-
-
-/*
 const routes3 = [
   { path: "/" },
   { path: "/*" },
@@ -52,9 +49,8 @@ const routes3 = [
   { path: "/login" }
 ];
 
-test("bastmatch", macro, routes3, "/", 0);
-test("bastmatch", macro, routes3, "/index.html", 1);
-test("bastmatch", macro, routes3, "/about", 2);
-test("bastmatch", macro, routes3, "/login", 3);
+test("priority-match", macro, routes3, "/", 0);
+test("priority-match", macro, routes3, "/index.html", 1);
+test("priority-match", macro, routes3, "/about", 2);
+test("priority-match", macro, routes3, "/login", 3);
 
-*/

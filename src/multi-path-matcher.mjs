@@ -34,14 +34,46 @@ export function compile(routes) {
     );
 }
 
+/**
+ * result of a path compilation
+ * priorities for each path component
+ * - :param        -> 0
+ * - match * or ?  -> 1
+ * - literal       -> 2
+ * @typedef  {Object} CompiledRoute
+ * @property {RegExp} regex for later checking and params extration
+ * @property {number} priority order in which to check
+ */
+
+/**
+ * 
+ * @param {string} path 
+ * @return {CompiledRoute} 
+ */
 export function pathToRegexp(path) {
   const segments = path
     .split(/\//)
     .map(part =>
-      part.startsWith(":") ? `(?<${part.substring(1)}>[^\/]*)` : part.replace(/\*/,'.*','g').replace(/\?/,'.?','g')
+      {
+        let priority = 0;
+
+        if(part.startsWith(":")) {
+          part = `(?<${part.substring(1)}>[^\/]*)`;
+        }
+        else {
+          const mod = part.replace(/\*/,'.*','g').replace(/\?/,'.?','g');
+          priority = mod === part ? 2 : 1;
+          part = mod;
+        }
+
+        return {
+          part,
+          priority
+        };
+      }
     );
-  const rs = "^" + segments.join("\\/") + '$';
-  return { regex: RegExp(rs), priority: segments.length };
+  const rs = "^" + segments.map(s => s.part).join("\\/") + '$';
+  return { regex: RegExp(rs), priority: segments.reduce( (a,c) => a + c.priority, 0) };
 }
 
 /**
