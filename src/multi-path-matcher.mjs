@@ -1,6 +1,9 @@
 /**
  * Result of the routes compilation
  * @typedef {Object} CompiledRoutes
+ * @param {number} priority
+ * @param {Set<string>} keys
+ * @param {RegEx} regex
  */
 
 /**
@@ -24,10 +27,11 @@
 export function compile(routes) {
   return routes
     .map(route => {
-      return {
-        route,
-        ...pathToRegexp(route.path)
-      };
+      const result = pathToRegexp(route.path);
+      route.regex = result.regex;
+      route.keys = result.keys;
+      route.priority = result.priority;
+      return route;
     })
     .sort((a, b) =>
       a.priority > b.priority ? -1 : a.priority < b.priority ? 1 : 0
@@ -42,38 +46,41 @@ export function compile(routes) {
  * - literal       -> 2
  * @typedef  {Object} CompiledRoute
  * @property {RegExp} regex for later checking and params extration
+ * @property {Set<string>} keys all keys found in the route
  * @property {number} priority order in which to check
  */
 
 /**
  * Generate as regex with priority
- * @param {string} path 
- * @return {CompiledRoute} 
+ * @param {string} path
+ * @return {CompiledRoute}
  */
 export function pathToRegexp(path) {
-  const segments = path
-    .split(/\//)
-    .map(part =>
-      {
-        let priority = 0;
+  const keys = new Set();
 
-        if(part.startsWith(":")) {
-          part = `(?<${part.substring(1)}>[^\/]*)`;
-        }
-        else {
-          const mod = part.replace(/\*/,'.*','g').replace(/\?/,'.?','g');
-          priority = mod === part ? 2 : 1;
-          part = mod;
-        }
+  const segments = path.split(/\//).map(part => {
+    let priority = 0;
+    if (part.startsWith(":")) {
+      const key = part.substring(1);
+      part = `(?<${key}>[^\/]*)`;
+      keys.add(key);
+    } else {
+      const mod = part.replace(/\*/, ".*", "g").replace(/\?/, ".?", "g");
+      priority = mod === part ? 2 : 1;
+      part = mod;
+    }
 
-        return {
-          part,
-          priority
-        };
-      }
-    );
-  const rs = "^" + segments.map(s => s.part).join("\\/") + '$';
-  return { regex: RegExp(rs), priority: segments.reduce( (a,c) => a + c.priority, 0) };
+    return {
+      part,
+      priority
+    };
+  });
+  const rs = "^" + segments.map(s => s.part).join("\\/") + "$";
+  return {
+    keys,
+    regex: RegExp(rs),
+    priority: segments.reduce((a, c) => a + c.priority, 0)
+  };
 }
 
 /**
@@ -86,9 +93,9 @@ export function matcher(compiled, path) {
   for (const c of compiled) {
     const m = path.match(c.regex);
     if (m) {
-      return { route: c.route, params: { ...m.groups } };
+      return { route: c, params: { ...m.groups } };
     }
   }
 
-  return { };
+  return {};
 }

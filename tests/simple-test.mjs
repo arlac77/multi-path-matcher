@@ -9,16 +9,23 @@ function macro(t, routes, path, route, params = {}) {
 }
 
 macro.title = (providedTitle = "", routes, path, route) =>
-  `${providedTitle} ${path} = ${routes[route] ? routes[route].path : "undefined"}`.trim();
+  `${providedTitle} ${path} = ${
+    routes[route] ? routes[route].path : "undefined"
+  }`.trim();
 
 const routes = [
   { path: "/a/b/c" },
   { path: "/a/b" },
   { path: "/d/:att1/e/:att2" },
   { path: "/d/:att1/e" },
-  { path: "/d/x/e" }, // higher prio than attribute
+  { path: "/d/x/e" }, // higher prio than with attribute
   { path: "/" }
 ];
+
+test("all keys", t => {
+  compile(routes);
+  t.deepEqual(routes.reduce((a, c) => new Set([...c.keys, ...a]), new Set()),new Set(['att1','att2']));
+});
 
 test(macro, routes, "/a", -1);
 test(macro, routes, "/a/b", 1);
@@ -28,13 +35,13 @@ test(macro, routes, "/d/value1/e/value2", 2, {
   att1: "value1",
   att2: "value2"
 });
-test(macro, routes, "/d/x/e", 4 );
+test(macro, routes, "/d/x/e", 4);
 test(macro, routes, "/", 5);
 
 const routes2 = [
   { path: "/a/b*" },
   { path: "/*" },
-  { path: "/pre*/a"},
+  { path: "/pre*/a" },
   { path: "/" }
 ];
 
@@ -48,7 +55,7 @@ test("wildcard", macro, routes2, "/prXXX/a", 1);
 const routes3 = [
   { path: "/" },
   { path: "/*" },
-  { path: "/about"},
+  { path: "/about" },
   { path: "/login" }
 ];
 
@@ -57,13 +64,14 @@ test("priority-match", macro, routes3, "/index.html", 1);
 test("priority-match", macro, routes3, "/about", 2);
 test("priority-match", macro, routes3, "/login", 3);
 
-
 const routes4 = [
   { path: "/article" },
   { path: "/article/:article" },
-  { path: "/article/orders"}
+  { path: "/article/orders" }
 ];
 
 test("priority-match-2", macro, routes4, "/artice", 0);
-test("priority-match-2", macro, routes4, "/article/0001", 1, { article: '0001'} );
+test("priority-match-2", macro, routes4, "/article/0001", 1, {
+  article: "0001"
+});
 test("priority-match-2", macro, routes4, "/article/orders", 2);
