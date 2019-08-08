@@ -16,6 +16,7 @@ const routes = [
   { path: "/a/b" },
   { path: "/d/:att1/e/:att2" },
   { path: "/d/:att1/e" },
+  { path: "/d/x/e" }, // higher prio than attribute
   { path: "/" }
 ];
 
@@ -27,7 +28,8 @@ test(macro, routes, "/d/value1/e/value2", 2, {
   att1: "value1",
   att2: "value2"
 });
-test(macro, routes, "/", 4);
+test(macro, routes, "/d/x/e", 4 );
+test(macro, routes, "/", 5);
 
 const routes2 = [
   { path: "/a/b*" },
@@ -55,3 +57,13 @@ test("priority-match", macro, routes3, "/index.html", 1);
 test("priority-match", macro, routes3, "/about", 2);
 test("priority-match", macro, routes3, "/login", 3);
 
+
+const routes4 = [
+  { path: "/article" },
+  { path: "/article/:article" },
+  { path: "/article/orders"}
+];
+
+test("priority-match-2", macro, routes4, "/artice", 0);
+test("priority-match-2", macro, routes4, "/article/0001", 1, { article: '0001'} );
+test("priority-match-2", macro, routes4, "/article/orders", 2);

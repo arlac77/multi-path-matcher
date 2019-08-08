@@ -36,8 +36,8 @@ matcher(compiled "/a");                   // undefined
 matcher(compiled, "/a/b");                // routes[1]
 matcher(compiled, "/a/b/c");              // routes[0]
 matcher(compiled, "/d/value1/e");         // routes[3] { att1: "value1" }
-matcher(compileds, "/d/value1/e/value2"); // routes[2] { att1: "value1", att2: "value2" }
-matcher(macro, routes, "/");              // routes[4]
+matcher(compiled, "/d/value1/e/value2");  // routes[2] { att1: "value1", att2: "value2" }
+matcher(compiled, "/");                   // routes[4]
 ```
 
 With wildcards
