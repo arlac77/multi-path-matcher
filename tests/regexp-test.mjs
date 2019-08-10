@@ -5,9 +5,9 @@ function macro(t, path, regex, priority = -1, keys = []) {
   const r = pathToRegexp(path);
   t.deepEqual(r.regex, new RegExp(regex));
   if (priority >= 0) {
-    t.is(r.priority, priority, 'priority');
+    t.is(r.priority, priority, "priority");
   }
-  t.deepEqual(r.keys,new Set(keys), 'keys');
+  t.deepEqual(r.keys, keys, "keys");
 }
 
 macro.title = (providedTitle = "", path, expected) =>

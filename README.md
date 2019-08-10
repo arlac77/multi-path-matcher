@@ -91,12 +91,12 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 ### Parameters
 
 -   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** 
--   `keys` **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
+-   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** 
 -   `regex` **RegEx** 
 
 ## Route
 
-one single route
+One single route
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -127,12 +127,12 @@ Returns **[CompiledRoutes](#compiledroutes)**
 
 ## CompiledRoute
 
-result of a path compilation
+Result of a path compilation
 priorities for each path component
 
--   :param        -> 0
--   match \* or ?  -> 1
--   literal       -> 2
+-   :param       -> 0
+-   match \* or ? -> 1
+-   plain        -> 2
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -144,7 +144,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ## pathToRegexp
 
-Generate as regex with priority
+Generate regex with priority
 
 ### Parameters
 

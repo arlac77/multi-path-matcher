@@ -2,7 +2,7 @@
  * Result of the routes compilation
  * @typedef {Object} CompiledRoutes
  * @param {number} priority
- * @param {Set<string>} keys
+ * @param {string[]} keys
  * @param {RegEx} regex
  */
 
@@ -50,23 +50,24 @@ export function compile(routes) {
  * @return {CompiledRoute}
  */
 export function pathToRegexp(path) {
-  const keys = new Set();
+  const keys = [];
 
   const segments = path.split(/\//).map(part => {
-    let priority = 0;
     if (part.startsWith(":")) {
       const key = part.substring(1);
-      part = `(?<${key}>[^\/]*)`;
-      keys.add(key);
-    } else {
-      const mod = part.replace(/\*/, ".*", "g").replace(/\?/, ".?", "g");
-      priority = mod === part ? 2 : 1;
-      part = mod;
+      keys.push(key);
+
+      return {
+        priority: 0,
+        part: `(?<${key}>[^\/]*)`
+      };
     }
 
+    const mod = part.replace(/\*/, ".*", "g").replace(/\?/, ".?", "g");
+
     return {
-      part,
-      priority
+      part: mod,
+      priority: mod === part ? 2 : 1
     };
   });
   return {
