@@ -7,7 +7,7 @@
  */
 
 /**
- * one single route
+ * One single route
  * @typedef {Object} Route
  * @property {string} path
  */
@@ -26,24 +26,18 @@
  */
 export function compile(routes) {
   return routes
-    .map(route => {
-      const result = pathToRegexp(route.path);
-      route.regex = result.regex;
-      route.keys = result.keys;
-      route.priority = result.priority;
-      return route;
-    })
+    .map(route => Object.assign(route, pathToRegexp(route.path)))
     .sort((a, b) =>
       a.priority > b.priority ? -1 : a.priority < b.priority ? 1 : 0
     );
 }
 
 /**
- * result of a path compilation
+ * Result of a path compilation
  * priorities for each path component
- * - :param        -> 0
- * - match * or ?  -> 1
- * - literal       -> 2
+ * - :param       -> 0
+ * - match * or ? -> 1
+ * - plain        -> 2
  * @typedef  {Object} CompiledRoute
  * @property {RegExp} regex for later checking and params extration
  * @property {Set<string>} keys all keys found in the route
@@ -51,7 +45,7 @@ export function compile(routes) {
  */
 
 /**
- * Generate as regex with priority
+ * Generate regex with priority
  * @param {string} path
  * @return {CompiledRoute}
  */
@@ -75,10 +69,9 @@ export function pathToRegexp(path) {
       priority
     };
   });
-  const rs = "^" + segments.map(s => s.part).join("\\/") + "$";
   return {
     keys,
-    regex: RegExp(rs),
+    regex: RegExp("^" + segments.map(s => s.part).join("\\/") + "$"),
     priority: segments.reduce((a, c) => a + c.priority, 0)
   };
 }
