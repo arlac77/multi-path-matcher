@@ -5,7 +5,7 @@ function macro(t, routes, path, route, params = {}) {
   const compiled = compile(routes);
   const result = matcher(compiled, path);
 
-  t.deepEqual(result, result.route ? { route: routes[route], params } : {});
+  t.deepEqual(result, result.route ? { route: routes[route], params } : { params: { } });
 }
 
 macro.title = (providedTitle = "", routes, path, route) =>
@@ -40,7 +40,7 @@ test(macro, routes, "/", 5);
 
 const routes2 = [
   { path: "/a/b*" },
-  { path: "/*" },
+  { path: "*" },
   { path: "/pre*/a" },
   { path: "/" }
 ];

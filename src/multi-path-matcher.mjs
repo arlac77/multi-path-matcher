@@ -13,9 +13,9 @@
  */
 
 /**
- * result of a match
+ * Result of a match
  * @typedef  {Object} Match
- * @property {Route} route as given to the compiler
+ * @property {Route} [route] as given to the compiler, undefined if no matching route found
  * @property {Object} params extracted from the path
  */
 
@@ -91,5 +91,5 @@ export function matcher(compiled, path) {
     }
   }
 
-  return {};
+  return { params: {} };
 }

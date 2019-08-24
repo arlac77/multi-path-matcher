@@ -106,13 +106,13 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ## Match
 
-result of a match
+Result of a match
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ### Properties
 
--   `route` **[Route](#route)** as given to the compiler
+-   `route` **[Route](#route)?** as given to the compiler, undefined if no matching route found
 -   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** extracted from the path
 
 ## compile
