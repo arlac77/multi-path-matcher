@@ -72,7 +72,7 @@ export function pathToRegexp(path) {
   });
   return {
     keys,
-    regex: RegExp("^" + segments.map(s => s.part).join("\\/") + "$"),
+    regex: RegExp("^" + segments.map(s => s.part).join("\\/") + "(\?.*)?$"),
     priority: segments.reduce((a, c) => a + c.priority, 0)
   };
 }
