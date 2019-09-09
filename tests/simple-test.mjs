@@ -28,7 +28,7 @@ test("all keys", t => {
 });
 
 test(macro, routes, "/a", -1);
-test(macro, routes, "/a/b?p=1", 1);
+test(macro, routes, "/a/b?p=1&q=2", 1);
 test(macro, routes, "/a/b/c", 0);
 test(macro, routes, "/d/value1/e", 3, { att1: "value1" });
 test(macro, routes, "/d/value1/e/value2", 2, {
