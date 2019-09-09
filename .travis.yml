@@ -3,6 +3,7 @@ branches:
   only:
     - master
     - /^greenkeeper/.*$/
+    - /^mkpr/.*$/
 jobs:
   include:
     - stage: test
