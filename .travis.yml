@@ -4,6 +4,7 @@ branches:
     - master
     - /^greenkeeper/.*$/
     - /^mkpr/.*$/
+    - /^npm-template-sync/.*$/
 jobs:
   include:
     - stage: test
