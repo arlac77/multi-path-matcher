@@ -8,7 +8,8 @@ branches:
 jobs:
   include:
     - stage: test
-      node_js: 12.10.0
+      node_js:
+        - 12.11.1
       script:
         - npm run cover
         - npx codecov
@@ -27,3 +28,4 @@ jobs:
         skip_cleanup: 'true'
         script:
           - npx semantic-release
+cache: '-npm'
