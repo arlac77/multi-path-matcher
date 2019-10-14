@@ -1,8 +1,8 @@
 /**
  * Result of the routes compilation
  * @typedef {Object} CompiledRoutes
- * @param {number} priority
- * @param {string[]} keys
+ * @param {number} priority higher number reflect more precise matches
+ * @param {string[]} keys param names
  * @param {RegEx} regex
  */
 
