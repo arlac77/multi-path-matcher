@@ -49,16 +49,16 @@ import { compile, matcher } from "multi-path-matcher";
 const routes = [
   { path: "/" },
   { path: "/*" },
-  { path: "/about"},
+  { path: "/about" },
   { path: "/login" }
 ];
 
 const compiled = compile(routes);
 
-matcher(compiled "/");                   // routes[0]
-matcher(compiled "/index.html");         // routes[1]
-matcher(compiled "/about");              // routes[2]
-matcher(compiled "/login");              // routes[3]
+matcher(compiled, "/");                   // routes[0]
+matcher(compiled, "/index.html");         // routes[1]
+matcher(compiled, "/about");              // routes[2]
+matcher(compiled, "/login?param=1");      // routes[3]
 ```
 
 # API
