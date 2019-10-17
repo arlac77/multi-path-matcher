@@ -68,19 +68,19 @@ matcher(compiled, "/login?param=1");      // routes[3]
 ### Table of Contents
 
 -   [CompiledRoutes](#compiledroutes)
-    -   [Parameters](#parameters)
--   [Route](#route)
     -   [Properties](#properties)
--   [Match](#match)
+-   [Route](#route)
     -   [Properties](#properties-1)
--   [compile](#compile)
-    -   [Parameters](#parameters-1)
--   [CompiledRoute](#compiledroute)
+-   [Match](#match)
     -   [Properties](#properties-2)
+-   [compile](#compile)
+    -   [Parameters](#parameters)
+-   [CompiledRoute](#compiledroute)
+    -   [Properties](#properties-3)
 -   [pathToRegexp](#pathtoregexp)
-    -   [Parameters](#parameters-2)
+    -   [Parameters](#parameters-1)
 -   [matcher](#matcher)
-    -   [Parameters](#parameters-3)
+    -   [Parameters](#parameters-2)
 
 ## CompiledRoutes
 
@@ -88,7 +88,7 @@ Result of the routes compilation
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
-### Parameters
+### Properties
 
 -   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** higher number reflect more precise matches
 -   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** param names
@@ -139,7 +139,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 ### Properties
 
 -   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extration
--   `keys` **[Set](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Set)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
+-   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
 -   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
 
 ## pathToRegexp

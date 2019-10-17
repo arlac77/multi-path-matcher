@@ -1,9 +1,9 @@
 /**
  * Result of the routes compilation
  * @typedef {Object} CompiledRoutes
- * @param {number} priority higher number reflect more precise matches
- * @param {string[]} keys param names
- * @param {RegEx} regex
+ * @property {number} priority higher number reflect more precise matches
+ * @property {string[]} keys param names
+ * @property {RegEx} regex
  */
 
 /**
@@ -40,7 +40,7 @@ export function compile(routes) {
  * - plain        -> 2
  * @typedef  {Object} CompiledRoute
  * @property {RegExp} regex for later checking and params extration
- * @property {Set<string>} keys all keys found in the route
+ * @property {string[]} keys all keys found in the route
  * @property {number} priority order in which to check
  */
 
@@ -53,7 +53,7 @@ export function pathToRegexp(path) {
   const keys = [];
 
   const segments = path.split(/\//).map(part => {
-    if (part.startsWith(":")) {
+    if (part[0] === ":") {
       const key = part.substring(1);
       keys.push(key);
 
@@ -63,7 +63,7 @@ export function pathToRegexp(path) {
       };
     }
 
-    const mod = part.replace(/\*/, ".*", "g").replace(/\?/, ".?", "g");
+    const mod = part.replace(/(\*|\?)/, ".$1", "g");
 
     return {
       part: mod,
@@ -84,10 +84,10 @@ export function pathToRegexp(path) {
  * @return {Match} match
  */
 export function matcher(compiled, path) {
-  for (const c of compiled) {
-    const m = path.match(c.regex);
+  for (const route of compiled) {
+    const m = path.match(route.regex);
     if (m) {
-      return { route: c, params: { ...m.groups } };
+      return { route, params: { ...m.groups } };
     }
   }
 
