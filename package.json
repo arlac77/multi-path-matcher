@@ -1,10 +1,11 @@
 {
   "name": "multi-path-matcher",
   "version": "0.0.0-semantic-release",
-  "type": "module",
   "publishConfig": {
     "access": "public"
   },
+  "sideEffects": false,
+  "type": "module",
   "main": "src/multi-path-matcher.mjs",
   "module": "src/multi-path-matcher.mjs",
   "description": "finds and decodes best matching path in a set of routes",
@@ -61,6 +62,5 @@
     "repository": {
       "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
     }
-  },
-  "sideEffects": false
+  }
 }
