@@ -26,7 +26,6 @@
     "lint": "documentation lint src/multi-path-matcher.mjs",
     "test": "ava"
   },
-  "dependencies": {},
   "devDependencies": {
     "ava": "^2.4.0",
     "c8": "^7.0.0",
