@@ -8,4 +8,6 @@ doc
 .tmp
 .travis.yml
 .vscode
+.markdown-doctest-setup.js
+rollup.config.js
 .DS_Store
