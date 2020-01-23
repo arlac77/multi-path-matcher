@@ -58,8 +58,8 @@ export function pathToRegexp(path) {
       keys.push(key);
 
       return {
-        priority: 0,
-        part: `(?<${key}>[^\/]*)`
+        part: `(?<${key}>[^\/]*)`,
+        priority: 0
       };
     }
 
