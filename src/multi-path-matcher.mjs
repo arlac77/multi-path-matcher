@@ -54,7 +54,7 @@ export function pathToRegexp(path) {
 
   const segments = path.split(/\//).map(part => {
     if (part[0] === ":") {
-      const key = part.substring(1);
+      const key = part.slice(1);
       keys.push(key);
 
       return {
