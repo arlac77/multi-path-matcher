@@ -1,0 +1,10 @@
+{
+  "name": "multi-path-matcher",
+  "description": "finds and decodes best matching path in a set of routes",
+  "icons": [
+    {
+      "src": "facicon.ico",
+      "sizes": "16x16"
+    }
+  ]
+}
