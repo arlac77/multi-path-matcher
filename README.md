@@ -4,8 +4,6 @@
 [![downloads](http://img.shields.io/npm/dm/multi-path-matcher.svg?style=flat-square)](https://npmjs.org/package/multi-path-matcher)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/multi-path-matcher.svg?style=flat-square)](https://github.com/arlac77/multi-path-matcher/issues)
 [![Build Status](https://secure.travis-ci.org/arlac77/multi-path-matcher.png)](http://travis-ci.org/arlac77/multi-path-matcher)
-[![codecov.io](http://codecov.io/github/arlac77/multi-path-matcher/coverage.svg?branch=master)](http://codecov.io/github/arlac77/multi-path-matcher?branch=master)
-[![Coverage Status](https://coveralls.io/repos/arlac77/multi-path-matcher/badge.svg)](https://coveralls.io/r/arlac77/multi-path-matcher)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/multi-path-matcher/badge.svg)](https://snyk.io/test/github/arlac77/multi-path-matcher)
