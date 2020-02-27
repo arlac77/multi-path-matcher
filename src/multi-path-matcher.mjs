@@ -51,6 +51,7 @@ export function compile(routes) {
  */
 export function pathToRegexp(path) {
   const keys = [];
+  let priority = 0;
 
   const segments = path.split(/\//).map(part => {
     if (part[0] === ":") {
@@ -58,22 +59,23 @@ export function pathToRegexp(path) {
       keys.push(key);
 
       return {
-        part: `(?<${key}>[^\/]*)`,
-        priority: 0
+        part: `(?<${key}>[^\/]*)`
       };
     }
 
     const mod = part.replace(/(\*|\?)/, ".$1", "g");
 
+    priority += mod === part ? 2 : 1;
+
     return {
-      part: mod,
-      priority: mod === part ? 2 : 1
+      part: mod
     };
   });
+ 
   return {
     keys,
     regex: RegExp("^" + segments.map(s => s.part).join("\\/") + "(\\?.*)?$"),
-    priority: segments.reduce((a, c) => a + c.priority, 0)
+    priority
   };
 }
 
