@@ -44,8 +44,6 @@
   },
   "homepage": "https://github.com/arlac77/multi-path-matcher#readme",
   "template": {
-    "repository": {
-      "url": "https://github.com/arlac77/npm-package-template-esm-only.git"
-    }
+    "inheritFrom": "arlac77/template-esm-only"
   }
 }
