@@ -56,7 +56,7 @@ export function pathToRegexp(path) {
   const segments = path.split(/\//).map(part => {
     if (part[0] === ":") {
       keys.push(part.slice(1));
-      return `([^\/]*)`;
+      return "([^\/]*)";
     }
 
     const mod = part.replace(/(\*|\?)/, ".$1", "g");
@@ -85,7 +85,7 @@ export function matcher(compiled, path) {
     if (m) {
       return {
         route,
-        params: Object.fromEntries(route.keys.map((key, i) => [key, m[i + 1]]))
+        params: Object.fromEntries(route.keys.map((k, i) => [k, m[i + 1]]))
       };
     }
   }
