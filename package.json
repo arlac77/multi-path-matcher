@@ -44,6 +44,9 @@
   },
   "homepage": "https://github.com/arlac77/multi-path-matcher#readme",
   "template": {
-    "inheritFrom": "arlac77/template-esm-only"
+    "inheritFrom": [
+      "arlac77/template-esm-only",
+      "arlac77/template-github"
+    ]
   }
 }
