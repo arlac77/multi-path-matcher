@@ -8,8 +8,7 @@
   "type": "module",
   "main": "src/multi-path-matcher.mjs",
   "exports": {
-    ".": "src/multi-path-matcher.mjs",
-    "./": "./"
+    ".": "src/multi-path-matcher.mjs"
   },
   "description": "finds and decodes best matching path in a set of routes",
   "keywords": [
