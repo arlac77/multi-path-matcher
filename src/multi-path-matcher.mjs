@@ -2,7 +2,7 @@
  * Result of the routes compilation
  * @typedef {Object} CompiledRoutes
  * @property {number} priority higher number reflect more precise matches
- * @property {string[]} keys param names
+ * @property {string[]} keys param names extractable from route
  * @property {RegEx} regex
  */
 
@@ -15,21 +15,20 @@
 /**
  * Result of a match
  * @typedef  {Object} Match
- * @property {Route} [route] as given to the compiler, undefined if no matching route found
+ * @property {Route[]} route as given to the compiler, undefined if no matching route found
  * @property {Object} params extracted from the path
  */
 
 /**
- * Compile a set of routes
+ * Compile a set of routes.
+ * All properties of the original routes are preserved
  * @param {Route[]} routes
  * @return {CompiledRoutes}
  */
 export function compile(routes) {
   return routes
     .map(route => Object.assign(route, pathToRegexp(route.path)))
-    .sort((a, b) =>
-      a.priority > b.priority ? -1 : a.priority < b.priority ? 1 : 0
-    );
+    .sort((a, b) => b.priority - a.priority);
 }
 
 /**
