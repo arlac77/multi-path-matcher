@@ -1,5 +1,5 @@
 import test from "ava";
-import { compile, matcher } from "../src/multi-path-matcher.mjs";
+import { compile, matcher } from "multi-path-matcher";
 
 function macro(t, routes, path, route, params = {}) {
   const compiled = compile(routes);

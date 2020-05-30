@@ -1,5 +1,5 @@
 import test from "ava";
-import { pathToRegexp } from "../src/multi-path-matcher.mjs";
+import { pathToRegexp } from "multi-path-matcher";
 
 function macro(t, path, regex, priority = -1, keys = []) {
   const r = pathToRegexp(path);
