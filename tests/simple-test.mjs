@@ -19,18 +19,22 @@ const routes = [
   { path: "/d/:att1/e/:att2" },
   { path: "/d/:att1/e" },
   { path: "/d/x/e" }, // higher prio than with attribute
-  { path: "/" }
+  { path: "/" },
+  { path: "/:k1/:k2/:k3" }
 ];
 
 test("all keys", t => {
   compile(routes);
-  t.deepEqual(routes.reduce((a, c) => new Set([...c.keys, ...a]), new Set()),new Set(['att1','att2']));
+  t.deepEqual(routes.reduce((a, c) => new Set([...c.keys, ...a]), new Set()),
+    new Set(['k1','k2','k3','att1','att2']));
 });
 
 test(macro, routes, "/a", -1);
 test(macro, routes, "/a/b?p=1&q=2", 1);
 test(macro, routes, "/a/b/c", 0);
+test(macro, routes, "/u/v/w", 6, { k1: "u", k2: "v", k3: "w" });
 test(macro, routes, "/d/value1/e", 3, { att1: "value1" });
+test(macro, routes, "/d/value1/e?p=1", 3, { att1: "value1" });
 test(macro, routes, "/d/value1/e/value2", 2, {
   att1: "value1",
   att2: "value2"
