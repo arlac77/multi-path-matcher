@@ -55,7 +55,7 @@ export function pathToRegexp(path) {
   const segments = path.split(/\//).map(part => {
     if (part[0] === ":") {
       keys.push(part.slice(1));
-      return "([^\/]*)";
+      return "([^\/#\?]*)";
     }
 
     const mod = part.replace(/(\*|\?)/, ".$1", "g");
@@ -67,7 +67,7 @@ export function pathToRegexp(path) {
 
   return {
     keys,
-    regex: RegExp("^" + segments.join("\\/") + "(\\?.*)?$"),
+    regex: RegExp("^" + segments.join("\\/") + "([\\?#].*)?$"),
     priority
   };
 }

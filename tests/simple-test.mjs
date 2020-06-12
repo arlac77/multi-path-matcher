@@ -31,6 +31,7 @@ test("all keys", t => {
 
 test(macro, routes, "/a", -1);
 test(macro, routes, "/a/b?p=1&q=2", 1);
+test(macro, routes, "/a/b#frag", 1);
 test(macro, routes, "/a/b/c", 0);
 test(macro, routes, "/u/v/w", 6, { k1: "u", k2: "v", k3: "w" });
 test(macro, routes, "/d/value1/e", 3, { att1: "value1" });
@@ -39,6 +40,15 @@ test(macro, routes, "/d/value1/e/value2", 2, {
   att1: "value1",
   att2: "value2"
 });
+test(macro, routes, "/d/value1/e/value2#frag", 2, {
+  att1: "value1",
+  att2: "value2"
+});
+test(macro, routes, "/d/value1/e/value2?p=1", 2, {
+  att1: "value1",
+  att2: "value2"
+});
+
 test(macro, routes, "/d/x/e", 4);
 test(macro, routes, "/", 5);
 
