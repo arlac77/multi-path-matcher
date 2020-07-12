@@ -49,9 +49,9 @@ export function compile(routes) {
 /**
  * Result of a path compilation
  * priorities for each path component
- * - :param       -> @see {@link PRIORITY_PARAM}
- * - match * or ? -> @see {@link PRIORITY_MATCH}
- * - plain        -> @see {@link PRIORITY_PLAIN}
+ * - :param       {@link PRIORITY_PARAM}
+ * - match * or ? {@link PRIORITY_MATCH}
+ * - plain        {@link PRIORITY_PLAIN}
  * @typedef  {Object} CompiledRoute
  * @property {RegExp} regex for later checking and params extration
  * @property {string[]} keys all keys found in the route

@@ -150,9 +150,9 @@ Returns **[CompiledRoutes](#compiledroutes)**
 Result of a path compilation
 priorities for each path component
 
--   :param       -> @see [PRIORITY_PARAM](#priority_param)
--   match \* or ? -> @see [PRIORITY_MATCH](#priority_match)
--   plain        -> @see [PRIORITY_PLAIN](#priority_plain)
+-   :param       [PRIORITY_PARAM](#priority_param)
+-   match \* or ? [PRIORITY_MATCH](#priority_match)
+-   plain        [PRIORITY_PLAIN](#priority_plain)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
