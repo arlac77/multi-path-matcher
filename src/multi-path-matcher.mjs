@@ -22,12 +22,12 @@
 /**
  * Prioritiy for a plain path component
  */
-export const PLAIN = 3;
+export const PLAIN = 100;
 
 /**
  * Prioritiy for a path component with matching
  */
-export const MATCH = 2;
+export const MATCH = 10;
 
 /**
  * Prioritiy for a parameter path component
