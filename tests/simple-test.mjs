@@ -5,7 +5,10 @@ function macro(t, routes, path, route, params = {}) {
   const compiled = compile(routes);
   const result = matcher(compiled, path);
 
-  t.deepEqual(result, result.route ? { route: routes[route], params } : { params: { } });
+  t.deepEqual(
+    result,
+    result.route ? { route: routes[route], params } : { params: {} }
+  );
 }
 
 macro.title = (providedTitle = "", routes, path, route) =>
@@ -25,8 +28,10 @@ const routes = [
 
 test("all keys", t => {
   compile(routes);
-  t.deepEqual(routes.reduce((a, c) => new Set([...c.keys, ...a]), new Set()),
-    new Set(['k1','k2','k3','att1','att2']));
+  t.deepEqual(
+    routes.reduce((a, c) => new Set([...c.keys, ...a]), new Set()),
+    new Set(["k1", "k2", "k3", "att1", "att2"])
+  );
 });
 
 test(macro, routes, "/a", -1);

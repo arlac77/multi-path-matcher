@@ -20,6 +20,21 @@
  */
 
 /**
+ * Prioritiy for a plain path component
+ */
+export const PRIORITY_PLAIN = 3;
+
+/**
+ * Prioritiy for a path component with matching
+ */
+export const PRIORITY_MATCH = 2;
+
+/**
+ * Prioritiy for a parameter path component
+ */
+export const PRIORITY_PARAM = 1;
+
+/**
  * Compile a set of routes.
  * All properties of the original routes are preserved
  * @param {Route[]} routes
@@ -34,9 +49,9 @@ export function compile(routes) {
 /**
  * Result of a path compilation
  * priorities for each path component
- * - :param       -> 0
- * - match * or ? -> 1
- * - plain        -> 2
+ * - :param       -> @see {@link PRIORITY_PARAM}
+ * - match * or ? -> @see {@link PRIORITY_MATCH}
+ * - plain        -> @see {@link PRIORITY_PLAIN}
  * @typedef  {Object} CompiledRoute
  * @property {RegExp} regex for later checking and params extration
  * @property {string[]} keys all keys found in the route
@@ -55,12 +70,13 @@ export function pathToRegexp(path) {
   const segments = path.split(/\//).map(part => {
     if (part[0] === ":") {
       keys.push(part.slice(1));
-      return "([^\/#\?]*)";
+      priority += PRIORITY_PARAM;
+      return "([^/#?]*)";
     }
 
     const mod = part.replace(/(\*|\?)/, ".$1", "g");
 
-    priority += mod === part ? 2 : 1;
+    priority += mod === part ? PRIORITY_PLAIN : PRIORITY_MATCH;
 
     return mod;
   });

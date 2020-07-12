@@ -71,6 +71,9 @@ matcher(compiled, "/login?param=1");      // routes[3]
     -   [Properties](#properties-1)
 -   [Match](#match)
     -   [Properties](#properties-2)
+-   [PRIORITY_PLAIN](#priority_plain)
+-   [PRIORITY_MATCH](#priority_match)
+-   [PRIORITY_PARAM](#priority_param)
 -   [compile](#compile)
     -   [Parameters](#parameters)
 -   [CompiledRoute](#compiledroute)
@@ -113,6 +116,24 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 -   `route` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Route](#route)>** as given to the compiler, undefined if no matching route found
 -   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** extracted from the path
 
+## PRIORITY_PLAIN
+
+Prioritiy for a plain path component
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+## PRIORITY_MATCH
+
+Prioritiy for a path component with matching
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
+## PRIORITY_PARAM
+
+Prioritiy for a parameter path component
+
+Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
+
 ## compile
 
 Compile a set of routes.
@@ -129,9 +150,9 @@ Returns **[CompiledRoutes](#compiledroutes)**
 Result of a path compilation
 priorities for each path component
 
--   :param       -> 0
--   match \* or ? -> 1
--   plain        -> 2
+-   :param       -> @see [PRIORITY_PARAM](#priority_param)
+-   match \* or ? -> @see [PRIORITY_MATCH](#priority_match)
+-   plain        -> @see [PRIORITY_PLAIN](#priority_plain)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
