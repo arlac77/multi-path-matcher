@@ -53,6 +53,10 @@ test(macro, routes, "/d/value1/e/value2?p=1", 2, {
   att1: "value1",
   att2: "value2"
 });
+test(macro, routes, "/d/value1/e/value2?p=1#frag", 2, {
+  att1: "value1",
+  att2: "value2"
+});
 
 test(macro, routes, "/d/x/e", 4);
 test(macro, routes, "/", 5);
