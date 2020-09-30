@@ -27,7 +27,8 @@
     "test:ava": "ava --timeout 2m tests/*.mjs",
     "cover": "c8 -x 'tests/**/*' --temp-directory build/tmp ava --timeout 2m && c8 report -r lcov -o build/coverage --temp-directory build/tmp",
     "docs": "documentation readme ./src/multi-path-matcher.mjs --section=API",
-    "lint": "documentation lint ./src/multi-path-matcher.mjs"
+    "lint": "npm run lint:docs",
+    "lint:docs": "documentation lint ./src/multi-path-matcher.mjs"
   },
   "devDependencies": {
     "ava": "^3.13.0",
