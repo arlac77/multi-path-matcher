@@ -3,7 +3,7 @@
 [![minified size](https://badgen.net/bundlephobia/min/multi-path-matcher)](https://bundlephobia.com/result?p=multi-path-matcher)
 [![downloads](http://img.shields.io/npm/dm/multi-path-matcher.svg?style=flat-square)](https://npmjs.org/package/multi-path-matcher)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/multi-path-matcher.svg?style=flat-square)](https://github.com/arlac77/multi-path-matcher/issues)
-[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fmulti-path-matcher%2Fbadge&style=flat)](https://actions-badge.atrox.dev/arlac77/multi-path-matcher/goto)
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Farlac77%2Fmulti-path-matcher%2Fbadge\&style=flat)](https://actions-badge.atrox.dev/arlac77/multi-path-matcher/goto)
 [![Styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Known Vulnerabilities](https://snyk.io/test/github/arlac77/multi-path-matcher/badge.svg)](https://snyk.io/test/github/arlac77/multi-path-matcher)
@@ -64,23 +64,23 @@ matcher(compiled, "/login?param=1");      // routes[3]
 
 ### Table of Contents
 
--   [CompiledRoutes](#compiledroutes)
-    -   [Properties](#properties)
--   [Route](#route)
-    -   [Properties](#properties-1)
--   [Match](#match)
-    -   [Properties](#properties-2)
--   [PLAIN](#plain)
--   [MATCH](#match-1)
--   [PARAM](#param)
--   [compile](#compile)
-    -   [Parameters](#parameters)
--   [CompiledRoute](#compiledroute)
-    -   [Properties](#properties-3)
--   [pathToRegexp](#pathtoregexp)
-    -   [Parameters](#parameters-1)
--   [matcher](#matcher)
-    -   [Parameters](#parameters-2)
+*   [CompiledRoutes](#compiledroutes)
+    *   [Properties](#properties)
+*   [Route](#route)
+    *   [Properties](#properties-1)
+*   [Match](#match)
+    *   [Properties](#properties-2)
+*   [PLAIN](#plain)
+*   [MATCH](#match-1)
+*   [PARAM](#param)
+*   [compile](#compile)
+    *   [Parameters](#parameters)
+*   [CompiledRoute](#compiledroute)
+    *   [Properties](#properties-3)
+*   [pathToRegexp](#pathtoregexp)
+    *   [Parameters](#parameters-1)
+*   [matcher](#matcher)
+    *   [Parameters](#parameters-2)
 
 ## CompiledRoutes
 
@@ -90,9 +90,9 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### Properties
 
--   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** higher number reflect more precise matches
--   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** param names extractable from route
--   `regex` **RegEx** 
+*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** higher number reflect more precise matches
+*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** param names extractable from route
+*   `regex` **RegEx** 
 
 ## Route
 
@@ -102,7 +102,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### Properties
 
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 ## Match
 
@@ -112,8 +112,8 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### Properties
 
--   `route` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Route](#route)>** as given to the compiler, undefined if no matching route found
--   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** extracted from the path
+*   `route` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Route](#route)>** as given to the compiler, undefined if no matching route found
+*   `params` **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** extracted from the path
 
 ## PLAIN
 
@@ -140,7 +140,7 @@ All properties of the original routes are preserved
 
 ### Parameters
 
--   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Route](#route)>** 
+*   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Route](#route)>** 
 
 Returns **[CompiledRoutes](#compiledroutes)** 
 
@@ -149,17 +149,17 @@ Returns **[CompiledRoutes](#compiledroutes)**
 Result of a path compilation
 priorities for each path component
 
--   :param       [PARAM](#param)
--   match \* or ? [MATCH](#match)
--   plain        [PLAIN](#plain)
+*   :param       [PARAM](#param)
+*   match \* or ? [MATCH](#match)
+*   plain        [PLAIN](#plain)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ### Properties
 
--   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extration
--   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
--   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
+*   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extration
+*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
+*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
 
 ## pathToRegexp
 
@@ -167,7 +167,7 @@ Generate regex with priority
 
 ### Parameters
 
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **[CompiledRoute](#compiledroute)** 
 
@@ -177,8 +177,8 @@ Find best match for a given path
 
 ### Parameters
 
--   `compiled` **[CompiledRoutes](#compiledroutes)** 
--   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `compiled` **[CompiledRoutes](#compiledroutes)** 
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
 
 Returns **[Match](#match)** match
 
