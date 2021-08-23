@@ -5,8 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
         node-version:
           - 14.17.5
+          - 16.7.0
     steps:
       - uses: actions/checkout@v2
       - name: Cache node modules
