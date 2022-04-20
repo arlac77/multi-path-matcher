@@ -10,7 +10,7 @@ jobs:
           - macos-latest
           - windows-latest
         node-version:
-          - 14.18.3
+          - 14.19.1
           - 16.14.2
           - 18.0.0
     steps:
