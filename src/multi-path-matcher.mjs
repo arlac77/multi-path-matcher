@@ -15,7 +15,7 @@
 /**
  * Result of a match
  * @typedef  {Object} Match
- * @property {Route[]} route as given to the compiler, undefined if no matching route found
+ * @property {Route[]} route as given to the compiler, undefined if no matching route was found
  * @property {Object} params extracted from the path
  */
 
@@ -53,7 +53,7 @@ export function compile(routes) {
  * - match * or ? {@link MATCH}
  * - plain        {@link PLAIN}
  * @typedef  {Object} CompiledRoute
- * @property {RegExp} regex for later checking and params extration
+ * @property {RegExp} regex for later checking and params extraction
  * @property {string[]} keys all keys found in the route
  * @property {number} priority order in which to check
  */
