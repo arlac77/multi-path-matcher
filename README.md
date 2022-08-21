@@ -92,7 +92,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 *   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** higher number reflect more precise matches
 *   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** param names extractable from route
-*   `regex` **RegEx** 
+*   `regex` **RegEx**&#x20;
 
 ## Route
 
@@ -102,7 +102,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 ### Properties
 
-*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 ## Match
 
@@ -140,9 +140,9 @@ All properties of the original routes are preserved
 
 ### Parameters
 
-*   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Route](#route)>** 
+*   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Route](#route)>**&#x20;
 
-Returns **[CompiledRoutes](#compiledroutes)** 
+Returns **[CompiledRoutes](#compiledroutes)**&#x20;
 
 ## CompiledRoute
 
@@ -167,9 +167,9 @@ Generate regex with priority
 
 ### Parameters
 
-*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
-Returns **[CompiledRoute](#compiledroute)** 
+Returns **[CompiledRoute](#compiledroute)**&#x20;
 
 ## matcher
 
@@ -177,8 +177,8 @@ Find best match for a given path
 
 ### Parameters
 
-*   `compiled` **[CompiledRoutes](#compiledroutes)** 
-*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** 
+*   `compiled` **[CompiledRoutes](#compiledroutes)**&#x20;
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 Returns **[Match](#match)** match
 
