@@ -1,7 +1,7 @@
 name: CI
 'on': push
 jobs:
-  test:
+  test-node:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,8 +14,7 @@ jobs:
           - 18.11.0
     steps:
       - uses: actions/checkout@v3
-      - name: Build / Test Node ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.5.1
+      - uses: actions/setup-node@v3.5.1
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
@@ -29,9 +28,27 @@ jobs:
           path-to-lcov: build/coverage/lcov.info
           parallel: true
         continue-on-error: true
+  test-browser:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser:
+          - chromium
+          - firefox
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 18.11.0
+          cache: npm
+      - run: npm ci
+      - run: npm run test:browser-ava --if-present
+        env:
+          BROWSER: ${{ matrix.browser }}
   release:
     needs:
-      - test
+      - test-node
+      - test-browser
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -47,7 +64,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PKGBUILD_PUBLISH: ${{ secrets.PKGBUILD_PUBLISH }}
   finish:
-    needs: test
+    needs:
+      - test-node
     runs-on: ubuntu-latest
     steps:
       - name: Coveralls Finished
