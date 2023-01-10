@@ -41,7 +41,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/arlac77/multi-path-matcher.git"
+    "url": "https://github.com/arlac77/multi-path-matcher"
   },
   "bugs": {
     "url": "https://github.com/arlac77/multi-path-matcher/issues"
