@@ -64,29 +64,23 @@ matcher(compiled, "/login?param=1");      // routes[3]
 
 ### Table of Contents
 
-- [multi-path-matcher](#multi-path-matcher)
-- [usage](#usage)
-- [API](#api)
-    - [Table of Contents](#table-of-contents)
-  - [CompiledRoutes](#compiledroutes)
-    - [Properties](#properties)
-  - [Route](#route)
-    - [Properties](#properties-1)
-  - [Match](#match)
-    - [Properties](#properties-2)
-  - [PLAIN](#plain)
-  - [MATCH](#match-1)
-  - [PARAM](#param)
-  - [compile](#compile)
-    - [Parameters](#parameters)
-  - [CompiledRoute](#compiledroute)
-    - [Properties](#properties-3)
-  - [pathToRegexp](#pathtoregexp)
-    - [Parameters](#parameters-1)
-  - [matcher](#matcher)
-    - [Parameters](#parameters-2)
-- [install](#install)
-- [license](#license)
+*   [CompiledRoutes](#compiledroutes)
+    *   [Properties](#properties)
+*   [Route](#route)
+    *   [Properties](#properties-1)
+*   [Match](#match)
+    *   [Properties](#properties-2)
+*   [PLAIN](#plain)
+*   [MATCH](#match-1)
+*   [PARAM](#param)
+*   [compile](#compile)
+    *   [Parameters](#parameters)
+*   [CompiledRoute](#compiledroute)
+    *   [Properties](#properties-3)
+*   [pathToRegexp](#pathtoregexp)
+    *   [Parameters](#parameters-1)
+*   [matcher](#matcher)
+    *   [Parameters](#parameters-2)
 
 ## CompiledRoutes
 
@@ -97,7 +91,7 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 ### Properties
 
 *   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** higher number reflect more precise matches
-*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** param names extractable from route
+*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** parameter names extractable from route
 *   `regex` **RegEx**&#x20;
 
 ## Route
