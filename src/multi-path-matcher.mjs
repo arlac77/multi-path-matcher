@@ -1,9 +1,10 @@
 /**
  * Result of the routes compilation
  * @typedef {Object} CompiledRoutes
+ * @property {string} path
  * @property {number} priority higher number reflect more precise matches
  * @property {string[]} keys parameter names extractable from route
- * @property {RegEx} regex
+ * @property {RegExp} regex
  */
 
 /**
