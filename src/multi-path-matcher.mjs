@@ -1,10 +1,15 @@
+
 /**
- * Result of the routes compilation
- * @typedef {Object} CompiledRoutes
+ * Result of a path compilation
+ * priorities for each path component
+ * - :param       {@link PARAM}
+ * - match * or ? {@link MATCH}
+ * - plain        {@link PLAIN}
+ * @typedef  {Object} CompiledRoute
  * @property {string} path
- * @property {number} priority higher number reflect more precise matches
- * @property {string[]} keys parameter names extractable from route
- * @property {RegExp} regex
+ * @property {RegExp} regex for later checking and params extraction
+ * @property {string[]} keys all keys found in the route
+ * @property {number} priority order in which to check
  */
 
 /**
@@ -39,36 +44,24 @@ export const PARAM = 1;
  * Compile a set of routes.
  * All properties of the original routes are preserved
  * @param {Route[]} routes
- * @return {CompiledRoutes}
+ * @return {CompiledRoute[]}
  */
 export function compile(routes) {
   return routes
-    .map(route => Object.assign(route, pathToRegexp(route.path)))
+    .map(route => pathToRegexp(route))
     .sort((a, b) => b.priority - a.priority);
 }
 
 /**
- * Result of a path compilation
- * priorities for each path component
- * - :param       {@link PARAM}
- * - match * or ? {@link MATCH}
- * - plain        {@link PLAIN}
- * @typedef  {Object} CompiledRoute
- * @property {RegExp} regex for later checking and params extraction
- * @property {string[]} keys all keys found in the route
- * @property {number} priority order in which to check
- */
-
-/**
  * Generate regex with priority
- * @param {string} path
+ * @param {Route} route
  * @return {CompiledRoute}
  */
-export function pathToRegexp(path) {
+export function pathToRegexp(route) {
   const keys = [];
   let priority = 0;
 
-  const segments = path.split(/\//).map(part => {
+  const segments = route.path.split(/\//).map(part => {
     if (part[0] === ":") {
       keys.push(part.slice(1));
       priority += PARAM;
@@ -82,16 +75,15 @@ export function pathToRegexp(path) {
     return mod;
   });
 
-  return {
-    keys,
-    regex: RegExp("^" + segments.join("\\/") + "([\\?#].*)?$"),
-    priority
-  };
+  route.keys = keys;
+  route.regex = RegExp("^" + segments.join("\\/") + "([\\?#].*)?$");
+  route.priority = priority;
+  return route;  
 }
 
 /**
  * Find best match for a given path
- * @param {CompiledRoutes} compiled
+ * @param {CompiledRoute[]} compiled
  * @param {string} path
  * @return {Match} match
  */

@@ -7,7 +7,9 @@ import {
 } from "multi-path-matcher";
 
 function macro(t, path, regex, priority = -1, keys = []) {
-  const r = pathToRegexp(path);
+  const route = { path };
+
+  const r = pathToRegexp(route);
   t.deepEqual(r.regex, new RegExp(regex));
   if (priority >= 0) {
     t.is(r.priority, priority, "priority");
