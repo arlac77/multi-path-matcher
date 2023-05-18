@@ -64,7 +64,7 @@ matcher(compiled, "/login?param=1");      // routes[3]
 
 ### Table of Contents
 
-*   [CompiledRoutes](#compiledroutes)
+*   [CompiledRoute](#compiledroute)
     *   [Properties](#properties)
 *   [Route](#route)
     *   [Properties](#properties-1)
@@ -75,25 +75,28 @@ matcher(compiled, "/login?param=1");      // routes[3]
 *   [PARAM](#param)
 *   [compile](#compile)
     *   [Parameters](#parameters)
-*   [CompiledRoute](#compiledroute)
-    *   [Properties](#properties-3)
 *   [pathToRegexp](#pathtoregexp)
     *   [Parameters](#parameters-1)
 *   [matcher](#matcher)
     *   [Parameters](#parameters-2)
 
-## CompiledRoutes
+## CompiledRoute
 
-Result of the routes compilation
+Result of a path compilation
+priorities for each path component
+
+*   :param       [PARAM](#param)
+*   match \* or ? [MATCH](#match)
+*   plain        [PLAIN](#plain)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ### Properties
 
 *   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
-*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** higher number reflect more precise matches
-*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** parameter names extractable from route
-*   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)**&#x20;
+*   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extraction
+*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
+*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
 
 ## Route
 
@@ -143,24 +146,7 @@ All properties of the original routes are preserved
 
 *   `routes` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Route](#route)>**&#x20;
 
-Returns **[CompiledRoutes](#compiledroutes)**&#x20;
-
-## CompiledRoute
-
-Result of a path compilation
-priorities for each path component
-
-*   :param       [PARAM](#param)
-*   match \* or ? [MATCH](#match)
-*   plain        [PLAIN](#plain)
-
-Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
-
-### Properties
-
-*   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extraction
-*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
-*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[CompiledRoute](#compiledroute)>**&#x20;
 
 ## pathToRegexp
 
@@ -168,7 +154,7 @@ Generate regex with priority
 
 ### Parameters
 
-*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+*   `route` **[Route](#route)**&#x20;
 
 Returns **[CompiledRoute](#compiledroute)**&#x20;
 
@@ -178,7 +164,7 @@ Find best match for a given path
 
 ### Parameters
 
-*   `compiled` **[CompiledRoutes](#compiledroutes)**&#x20;
+*   `compiled` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[CompiledRoute](#compiledroute)>**&#x20;
 *   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 Returns **[Match](#match)** match
