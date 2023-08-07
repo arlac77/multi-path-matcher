@@ -102,3 +102,12 @@ test("priority-match-2", macro, routes4, "/article/0001", 1, {
   article: "0001"
 });
 test("priority-match-2", macro, routes4, "/article/orders", 2);
+
+
+const routes5 = [
+  { path: "#article" },
+  { path: "#article:article" }
+];
+
+test("hash-match-1", macro, routes5, "#article", 0);
+test("hash-match-1", macro, routes5, "#article:1", 1);
