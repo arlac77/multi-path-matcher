@@ -8,7 +8,7 @@
  * @typedef  {Object} CompiledRoute
  * @property {string} path
  * @property {RegExp} regex for later checking and params extraction
- * @property {string[]} keys all keys found in the route
+ * @property {string} [keys] all keys found in the route
  * @property {number} priority order in which to check
  */
 
@@ -21,7 +21,7 @@
 /**
  * Result of a match
  * @typedef  {Object} Match
- * @property {Route[]} route as given to the compiler, undefined if no matching route was found
+ * @property {Route} [route] as given to the compiler, undefined if no matching route was found
  * @property {Object} params extracted from the path
  */
 
