@@ -4,17 +4,14 @@ import { compile, matcher } from "multi-path-matcher";
 function macro(t, routes, path, route, params = {}) {
   const compiled = compile(routes);
   const result = matcher(compiled, path);
-
   t.deepEqual(
     result,
-    result.route ? { route: routes[route], params } : { params: {} }
-  );
+    result.route ? { route: routes[route], params } : { params }
+  ,path);
 }
 
 macro.title = (providedTitle = "", routes, path, route) =>
-  `${providedTitle} ${path} = ${
-    routes[route] ? routes[route].path : "undefined"
-  }`.trim();
+  `${providedTitle} ${path} = ${routes[route]?.path || "undefined"}`.trim();
 
 const routes = [
   { path: "/a/b/c" },
@@ -42,7 +39,7 @@ test(macro, routes, "/u/v/w", 6, { k1: "u", k2: "v", k3: "w" });
 test(macro, routes, "/d/value1/e", 3, { att1: "value1" });
 test(macro, routes, "/d/value1/e?p=1", 3, { att1: "value1" });
 test(macro, routes, "/d/ with space /e", 3, {
-  att1: " with space ",
+  att1: " with space "
 });
 
 test(macro, routes, "/d/value1/e/value2", 2, {
@@ -103,11 +100,8 @@ test("priority-match-2", macro, routes4, "/article/0001", 1, {
 });
 test("priority-match-2", macro, routes4, "/article/orders", 2);
 
-
-const routes5 = [
-  { path: "#article" },
-  { path: "#article:article" }
-];
+const routes5 = [{ path: "#article" }, { path: "#article/:article" }];
 
 test("hash-match-1", macro, routes5, "#article", 0);
-test("hash-match-1", macro, routes5, "#article:1", 1);
+test("hash-match-1", macro, routes5, "#article/1", 1, { article: "1" });
+test("hash-match-1", macro, routes5, "#article/abc", 1, { article: "abc" });

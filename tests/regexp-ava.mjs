@@ -3,7 +3,7 @@ import {
   pathToRegexp,
   PLAIN,
   PARAM,
-  MATCH
+  WILDCARD
 } from "multi-path-matcher";
 
 function macro(t, path, regex, priority = -1, keys = []) {
@@ -46,11 +46,11 @@ test(
   ["attr1", "attr2"]
 );
 
-test(macro, "*", "^.*([\\?#].*)?$", MATCH);
-test(macro, "/*", "^\\/.*([\\?#].*)?$", PLAIN + MATCH);
+test(macro, "*", "^.*([\\?#].*)?$", WILDCARD);
+test(macro, "/*", "^\\/.*([\\?#].*)?$", PLAIN + WILDCARD);
 test(
   macro,
   "/*/a*2/b*/?c",
   "^\\/.*\\/a.*2\\/b.*\\/.?c([\\?#].*)?$",
-  PLAIN + MATCH * 4
+  PLAIN + WILDCARD * 4
 );

@@ -3,7 +3,7 @@
  * Result of a path compilation
  * priorities for each path component
  * - :param       {@link PARAM}
- * - match * or ? {@link MATCH}
+ * - match * or ? {@link WILDCARD}
  * - plain        {@link PLAIN}
  * @typedef  {Object} CompiledRoute
  * @property {string} path of the route
@@ -31,9 +31,9 @@
 export const PLAIN = 100;
 
 /**
- * Prioritiy for a path component with matching
+ * Prioritiy for a path component with a wildcard '*'
  */
-export const MATCH = 10;
+export const WILDCARD = 10;
 
 /**
  * Prioritiy for a parameter path component
@@ -68,9 +68,9 @@ export function pathToRegexp(route) {
       return "([^/#?]*)";
     }
 
-    const mod = part.replace(/(\*|\?)/, ".$1", "g");
+    const mod = part.replaceAll(/(\*|\?)/g, ".$1");
 
-    priority += mod === part ? PLAIN : MATCH;
+    priority += mod === part ? PLAIN : WILDCARD;
 
     return mod;
   });
