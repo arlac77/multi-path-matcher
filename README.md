@@ -71,7 +71,7 @@ matcher(compiled, "/login?param=1");      // routes[3]
 *   [Match](#match)
     *   [Properties](#properties-2)
 *   [PLAIN](#plain)
-*   [MATCH](#match-1)
+*   [WILDCARD](#wildcard)
 *   [PARAM](#param)
 *   [compile](#compile)
     *   [Parameters](#parameters)
@@ -86,14 +86,14 @@ Result of a path compilation
 priorities for each path component
 
 *   :param       [PARAM](#param)
-*   match \* or ? [MATCH](#match)
+*   match \* or ? [WILDCARD](#wildcard)
 *   plain        [PLAIN](#plain)
 
 Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 ### Properties
 
-*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the route
 *   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extraction
 *   `keys` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** all keys found in the route
 *   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
@@ -125,9 +125,9 @@ Prioritiy for a plain path component
 
 Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
-## MATCH
+## WILDCARD
 
-Prioritiy for a path component with matching
+Prioritiy for a path component with a wildcard '\*'
 
 Type: [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)
 
@@ -150,7 +150,7 @@ Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Gl
 
 ## pathToRegexp
 
-Generate regex with priority
+Generate regex with priority.
 
 ### Parameters
 
@@ -160,7 +160,7 @@ Returns **[CompiledRoute](#compiledroute)**&#x20;
 
 ## matcher
 
-Find best match for a given path
+Find best match for a given path.
 
 ### Parameters
 
