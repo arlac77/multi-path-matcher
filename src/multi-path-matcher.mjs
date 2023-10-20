@@ -6,7 +6,7 @@
  * - match * or ? {@link MATCH}
  * - plain        {@link PLAIN}
  * @typedef  {Object} CompiledRoute
- * @property {string} path
+ * @property {string} path of the route
  * @property {RegExp} regex for later checking and params extraction
  * @property {string} [keys] all keys found in the route
  * @property {number} priority order in which to check
@@ -53,7 +53,7 @@ export function compile(routes) {
 }
 
 /**
- * Generate regex with priority
+ * Generate regex with priority.
  * @param {Route} route
  * @return {CompiledRoute}
  */
@@ -82,7 +82,7 @@ export function pathToRegexp(route) {
 }
 
 /**
- * Find best match for a given path
+ * Find best match for a given path.
  * @param {CompiledRoute[]} compiled
  * @param {string} path
  * @return {Match} match
