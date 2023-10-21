@@ -161,6 +161,7 @@ Returns **[CompiledRoute](#compiledroute)**&#x20;
 ## matcher
 
 Find best match for a given path.
+Decodes params into an object.
 
 ### Parameters
 
