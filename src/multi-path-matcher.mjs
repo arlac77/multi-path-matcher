@@ -83,6 +83,7 @@ export function pathToRegexp(route) {
 
 /**
  * Find best match for a given path.
+ * Decodes params into an object.
  * @param {CompiledRoute[]} compiled
  * @param {string} path
  * @return {Match} match
@@ -93,7 +94,7 @@ export function matcher(compiled, path) {
     if (m) {
       return {
         route,
-        params: Object.fromEntries(route.keys.map((k, i) => [k, m[i + 1]]))
+        params: Object.fromEntries(route.keys.map((k, i) => [k, decodeURIComponent(m[i + 1])]))
       };
     }
   }
