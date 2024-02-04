@@ -1,3 +1,8 @@
+/**
+ * One single route
+ * @typedef {Object} Route
+ * @property {string} path
+ */
 
 /**
  * Result of a path compilation
@@ -5,17 +10,10 @@
  * - :param       {@link PARAM}
  * - match * or ? {@link WILDCARD}
  * - plain        {@link PLAIN}
- * @typedef  {Object} CompiledRoute
- * @property {string} path of the route
+ * @typedef  {Route} CompiledRoute
  * @property {RegExp} regex for later checking and params extraction
- * @property {string} [keys] all keys found in the route
+ * @property {string[]} keys all keys found in the route
  * @property {number} priority order in which to check
- */
-
-/**
- * One single route
- * @typedef {Object} Route
- * @property {string} path
  */
 
 /**
@@ -78,7 +76,7 @@ export function pathToRegexp(route) {
   route.keys = keys;
   route.regex = RegExp("^" + segments.join("\\/") + "([\\?#].*)?$");
   route.priority = priority;
-  return route;  
+  return route;
 }
 
 /**
@@ -94,7 +92,9 @@ export function matcher(compiled, path) {
     if (m) {
       return {
         route,
-        params: Object.fromEntries(route.keys.map((k, i) => [k, decodeURIComponent(m[i + 1])]))
+        params: Object.fromEntries(
+          route.keys.map((k, i) => [k, decodeURIComponent(m[i + 1])])
+        )
       };
     }
   }
