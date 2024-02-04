@@ -64,9 +64,9 @@ matcher(compiled, "/login?param=1");      // routes[3]
 
 ### Table of Contents
 
-*   [CompiledRoute](#compiledroute)
-    *   [Properties](#properties)
 *   [Route](#route)
+    *   [Properties](#properties)
+*   [CompiledRoute](#compiledroute)
     *   [Properties](#properties-1)
 *   [Match](#match)
     *   [Properties](#properties-2)
@@ -80,24 +80,6 @@ matcher(compiled, "/login?param=1");      // routes[3]
 *   [matcher](#matcher)
     *   [Parameters](#parameters-2)
 
-## CompiledRoute
-
-Result of a path compilation
-priorities for each path component
-
-*   :param       [PARAM](#param)
-*   match \* or ? [WILDCARD](#wildcard)
-*   plain        [PLAIN](#plain)
-
-Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
-
-### Properties
-
-*   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** of the route
-*   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extraction
-*   `keys` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)?** all keys found in the route
-*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
-
 ## Route
 
 One single route
@@ -107,6 +89,23 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 ### Properties
 
 *   `path` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+
+## CompiledRoute
+
+Result of a path compilation
+priorities for each path component
+
+*   :param       [PARAM](#param)
+*   match \* or ? [WILDCARD](#wildcard)
+*   plain        [PLAIN](#plain)
+
+Type: [Route](#route)
+
+### Properties
+
+*   `regex` **[RegExp](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/RegExp)** for later checking and params extraction
+*   `keys` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>** all keys found in the route
+*   `priority` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** order in which to check
 
 ## Match
 
