@@ -1,5 +1,6 @@
 [![npm](https://img.shields.io/npm/v/multi-path-matcher.svg)](https://www.npmjs.com/package/multi-path-matcher)
 [![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![Typed with TypeScript](https://flat.badgen.net/badge/icon/Typed?icon=typescript\&label\&labelColor=blue\&color=555555)](https://typescriptlang.org)
 [![bundlejs](https://deno.bundlejs.com/?q=multi-path-matcher\&badge=detailed)](https://bundlejs.com/?q=multi-path-matcher)
 [![downloads](http://img.shields.io/npm/dm/multi-path-matcher.svg?style=flat-square)](https://npmjs.org/package/multi-path-matcher)
 [![GitHub Issues](https://img.shields.io/github/issues/arlac77/multi-path-matcher.svg?style=flat-square)](https://github.com/arlac77/multi-path-matcher/issues)
