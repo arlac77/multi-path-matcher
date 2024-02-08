@@ -6,8 +6,12 @@
     "provenance": true
   },
   "exports": {
-    ".": "./src/multi-path-matcher.mjs"
+    ".": {
+      "types": "./dist/multi-path-matcher.d.mts",
+      "default": "./src/multi-path-matcher.mjs"
+    }
   },
+  "types": "./dist/multi-path-matcher.d.mts",
   "description": "Finds and decodes best matching path in a set of routes",
   "keywords": [
     "router",
@@ -21,6 +25,7 @@
   ],
   "license": "BSD-2-Clause",
   "scripts": {
+    "prepare": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir dist -t esnext -m esnext --module nodenext --moduleResolution nodenext ./src**/*.mjs",
     "test": "npm run test:browser-ava && npm run test:ava",
     "test:ava": "ava --timeout 4m tests/*-ava.mjs tests/*-ava-node.mjs",
     "test:browser-ava": "browser-ava --headless --no-keep-open tests/*-ava.mjs tests/*-ava-browser.mjs",
