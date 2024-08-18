@@ -65,6 +65,10 @@ jobs:
       - run: npm run test:browser-ava --if-present
         env:
           BROWSER: ${{ matrix.browser }}
+      - name: test browser
+        run: npm run test:browser-ava --if-present
+        env:
+          BROWSER: ${{ matrix.browser }}
   release:
     needs:
       - test-node
