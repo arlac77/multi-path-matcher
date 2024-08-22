@@ -5,14 +5,13 @@ on:
       - package.json
   schedule:
     - cron: 13 8 * * 6
-  workflow_dispatch:
 jobs:
   update_package_lock:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
-          - 22.6.0
+          - 22.7.0
         browser:
           - chrome
     steps:

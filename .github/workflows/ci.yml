@@ -20,7 +20,7 @@ jobs:
           - macos-latest
           - windows-latest
         node-version:
-          - 22.6.0
+          - 22.7.0
     steps:
       - name: checkout
         uses: actions/checkout@v4.1.7
@@ -30,9 +30,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: npm
           cache-dependency-path: package-lock.json
-      - name: checkout
+      - name: install
         run: npm ci
-      - run: npm run cover --if-present
+      - name: test and coverage
+        run: npm run cover --if-present
       - name: coveralls
         uses: coverallsapp/github-action@v2
         with:
@@ -54,22 +55,25 @@ jobs:
       - name: prepare node
         uses: actions/setup-node@v4.0.3
         with:
-          node-version: 22.6.0
+          node-version: 22.7.0
           cache: npm
           cache-dependency-path: package-lock.json
-      - name: checkout
+      - name: install
         run: npm ci
       - name: install playwright
         run: npx playwright install
+      - run: npm run test:browser-ava --if-present
+        env:
+          BROWSER: ${{ matrix.browser }}
       - name: test browser
-        npm run test:browser-ava --if-present
+        run: npm run test:browser-ava --if-present
         env:
           BROWSER: ${{ matrix.browser }}
   release:
     needs:
       - test-node
       - test-browser
-    runs-on: ubuntu-latest
+    runs-on: linux
     permissions:
       contents: write
       issues: write
@@ -81,10 +85,10 @@ jobs:
       - name: prepare node
         uses: actions/setup-node@v4.0.3
         with:
-          node-version: 22.6.0
+          node-version: 22.7.0
           cache: npm
           cache-dependency-path: package-lock.json
-      - name: checkout
+      - name: install
         run: npm ci
       - name: release
         run: npx semantic-release
