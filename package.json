@@ -23,7 +23,7 @@
       "email": "markus.felten@gmx.de"
     }
   ],
-  "license": "--overwrite-- 0BSD",
+  "license": "0BSD",
   "scripts": {
     "prepare": "node --run prepare:typescript",
     "prepare:typescript": "tsc --allowJs --declaration --emitDeclarationOnly --declarationDir types --resolveJsonModule --target es2024 --lib es2024 -m esnext --module nodenext --moduleResolution nodenext --rootDir src ./src**/*.mjs",
