@@ -8,8 +8,8 @@
   "types": "./types/multi-path-matcher.d.mts",
   "exports": {
     ".": {
-      "default": "./src/multi-path-matcher.mjs",
-      "types": "./types/multi-path-matcher.d.mts"
+      "types": "./types/multi-path-matcher.d.mts",
+      "default": "./src/multi-path-matcher.mjs"
     }
   },
   "description": "Finds and decodes best matching path in a set of routes",
