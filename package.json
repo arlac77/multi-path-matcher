@@ -39,9 +39,9 @@
   "dependencies": {
     "ava": "^6.3.0",
     "content-entry": "^13.0.4",
-    "fetch-rate-limit-util": "^4.4.1",
-    "repository-provider": "^35.3.4",
-    "repository-provider-test-support": "^3.1.9"
+    "fetch-rate-limit-util": "^4.5.2",
+    "repository-provider": "^35.3.5",
+    "repository-provider-test-support": "^3.1.15"
   },
   "devDependencies": {
     "ava": "^6.3.0",
