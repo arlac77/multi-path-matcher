@@ -10,7 +10,8 @@
  * - :param       {@link PARAM}
  * - match * or ? {@link WILDCARD}
  * - plain        {@link PLAIN}
- * @typedef  {Route} CompiledRoute
+ * @typedef  {Object} CompiledRoute
+ * @property {string} path
  * @property {RegExp} regex for later checking and params extraction
  * @property {string[]} keys all keys found in the route
  * @property {number} priority order in which to check
